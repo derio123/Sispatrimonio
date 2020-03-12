@@ -2,34 +2,37 @@
 
 @section('content')
 <div class="container uper">
-    @if(session()->get('sucess'))
-    <div class="alert alert-sucess">
-        {{ session()->get('sucess')}}
-    </div><br>
-    @endif
+
     <div class="card">
         <h3 class="card-text text-center">Patrimonios relacionados</h3>
     </div>
+    <div class="card">
 
-    <table class="table table-striped">
+    </div>
+    <table class="table-responsive-md table table-bordered">
         <thead>
             <tr>
-                <th> Categoria</th>
-                <th> Patrimonio</th>
                 <th> Usuario </th>
-                <th> Ações </th>
+                <th> Patrimonio</th>
+                <th> Categoria</th>
+                <th colspan="3"> Ações </th>
+                <th><a href="{{ route('patrimonio.create')}}" class="btn btn-primary mb-1 mt-1">
+                        Adicionar
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </th>
             </tr>
-            <a href="{{ route('patrimonio.create')}}" class="btn btn-primary mb-1 mt-1">
-                Adicionar
-                <i class="fas fa-plus"></i>
-            </a>
+
         </thead>
         <tbody>
             @foreach($patrimonios as $patrimonio)
             <tr>
-                <td>{{$patrimonio->categoria}} </td>
-                <td> Patimonio</td>
                 <td> Usuario </td>
+                <td> Patimonio</td>
+                <td>{{$patrimonio->categoria}} </td>
+                @php
+                var_dump($patrimonio->categoria)
+                @endphp
                 <td>
                     <a href="{{ route('patrimonio.show', $patrimonio->id)}}" data-toggle="modal" data-target="#modalShow{{$patrimonio->id}}" class="btn btn-secondary">
                         Detalhes
@@ -50,7 +53,7 @@
             @endforeach
         </tbody>
     </table>
-    {{ $patrimonios->links() }}
+
 
 </div>
 

@@ -14,7 +14,7 @@ class PatrimonioController extends Controller
      */
     public function index()
     {
-        $patrimonios = Patrimonio::paginate(8);
+        $patrimonios = Patrimonio::all();
         return view('patrimonio', compact('patrimonios'));
     }
 
@@ -35,17 +35,18 @@ class PatrimonioController extends Controller
      */
     public function store(Request $request) {
         $validate = $request->validate([
-            'categoria' => 'required',
+            'categoria' => 'required|max:20',
             'computador' => 'required|max:30',
             'monitor' => 'required|max:30',
-            'Qtd_Monitor' => 'required',
+            'monitor2' => 'max:30',
+            'Qtd_Monitor' => 'max:30',
             'plenus' => 'max:30',
             'mesa' => 'max:30',
             'gaveteiro' => 'max:30',
             'cadeira' => 'max:30',
         ]);
         $patrimonios = Patrimonio::create($validate);
-        return redirect()->route('patrimonio.index', $patrimonios)->with('sucess', 'Patrimonio salvo!');    
+        return redirect()->route('patrimonio.index', $patrimonios)->withSuccess('Patrimonio salvo!');    
     }
 
     /**
@@ -56,7 +57,7 @@ class PatrimonioController extends Controller
      */
     public function show($id){
         $patrimonios = Patrimonio::findOrfail($id);
-        return view('forms.show', compact('patrimonio'));
+        return view('forms.show', compact('patrimonios'));
     }
 
     /**
@@ -77,20 +78,22 @@ class PatrimonioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         $validate = $request->validate([
-            'categoria' => 'required',
+            'categoria' => 'required|max:20',
             'computador' => 'required|max:30',
             'monitor' => 'required|max:30',
+            'monitor2' => 'max:30',
             'Qtd_Monitor' => 'required',
             'plenus' => 'max:30',
             'mesa' => 'max:30',
             'gaveteiro' => 'max:30',
             'cadeira' => 'max:30',
         ]);
+        $id = $request->id;
         Patrimonio::whereId($id)->update($validate);
-        return redirect()->route('patrimonio.index')->with('sucess', 'Patrimonio atualizado!'); 
+        return redirect()->route('patrimonio.index')->withSuccess('Patrimonio atualizado!'); 
     }
 
     /**
@@ -102,6 +105,6 @@ class PatrimonioController extends Controller
     public function destroy($id){
         $patrimonios = Patrimonio::findOrfail($id);
         $patrimonios->delete();
-        return redirect()->route('patrimonio.index')->with('sucess', 'Patrimonio excluido!');
+        return redirect()->route('patrimonio.index')->withSuccess('Patrimonio excluido!');
     }
 }

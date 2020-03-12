@@ -11,9 +11,6 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            @php
-              var_dump($patrimonio)
-            @endphp
             <th>Categoria</th>
             <th>Patrimonios</th>
             <th>Cod. Patrimonio</th>
