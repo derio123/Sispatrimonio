@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="Derio Matheus" content="Portfolio">
-    <title>Sispatrimonio</title>
+    <link rel="icon" href="{{asset('favicon.ico')}}">
+    <title>Sispat</title>
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/app.css')}}">
     <script src="{{ asset('js/jquery-3.4.1.slim.min.js')}}"></script>
@@ -15,7 +16,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" ><img class="img" src="{{ asset('img/Ouvi.png')}}" alt=""></a>
+        <a class="navbar-brand"><img class="img" src="{{ asset('img/Ouvi.png')}}" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -27,7 +28,10 @@
                 </li>
 
                 <li class="nav-item active">
-                    <a class="nav-link active" href="{{route('patrimonio.index')}}">Patrimonio <span class="sr-only">(current)</span></a>
+                    <a class="nav-link active" href="{{route('patrimonio.index')}}" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Patrimonio <span class="sr-only">(current)</span></a>
+                    <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown2">
+                        @include('layouts.menupatrimonios')
+                    </div>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -50,10 +54,11 @@
 
 <body>
     <div class="container">
+        @yield('content')
+
         <div class="uper">
             @include('message.flash-message')
         </div>
-        @yield('content')
     </div>
 
 </body>

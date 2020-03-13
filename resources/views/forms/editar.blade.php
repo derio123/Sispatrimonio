@@ -2,6 +2,7 @@
 @section('content')
 
 <div class="uper">
+
     <div class="text-center">
         <h3>Editar patrimonio</h3>
     </div>
@@ -30,12 +31,14 @@
                         </select>
                         <div class="form-group">
                             <label for="description" id="INF">Categoria:</label>
-                            <input type="radio" onclick="document.getElementById('Info').style.display = 'initial', document.getElementById('Moveis').style.display = 'none'" name="categoria" value="Informatica">Informatica</input>
-                            <input type="radio" onclick="document.getElementById('Info').style.display = 'none', document.getElementById('Moveis').style.display = 'initial'" name="categoria" value="Móveis">Móveis</input>
+                            <input type="radio" onclick="document.getElementById('Info').style.display = 'initial',
+                            document.getElementById('Moveis').style.display = 'none'" name="categoria" value="{{$patrimonios->categoria[0]}}">Informatica</input>
+                            <input type="radio" onclick="document.getElementById('Info').style.display = 'none',
+                            document.getElementById('Moveis').style.display = 'initial'" name="categoria" value="{{$patrimonios->categoria[1]}}">Móveis</input>
                         </div>
                     </div>
 
-                    <div class="col-sm-9 col-md-6 text-left">
+                    <div class="col-sm-9 col-md-12 text-left">
                         <div class="form-check-label col-auto" id="Info">
                             <label for="name">N° do Computador:</label>
                             <input class="form-control" value="{{$patrimonios->computador}}" type="text" name="computador" id="" autofocus>
@@ -52,7 +55,7 @@
                                 <input class="form-control" type="text" id="moni1" value="{{$patrimonios->monitor}}" name="monitor" autofocus>
                             </div>
                             <div class="form-check-label mb-2 quant" id="qtd2">
-                                <label for="moni2">Cod. Monitor</label>
+                                <label for="moni2">Cod. Monitor 2</label>
                                 <input class="form-control" type="text" id="moni2" value="{{$patrimonios->monitor2}}" name="monitor2" autofocus>
                             </div>
                         </div>
@@ -71,9 +74,9 @@
 
                     <button type="submit" class="btn btn-primary">Salvar</button>
 
-                    <a href="{{route('patrimonio.index')}}" type="submit" class="btn btn-secondary ml-2">
+                   <!--  <a href="{{route('patrimonio.index')}}" type="submit" class="btn btn-secondary ml-2">
                         <i class="fas fa-chevron-left"></i>Voltar
-                    </a>
+                    </a> -->
                 </div>
                 <!-- <div class="form-group">
                 <label for="quantity">Plenus:</label>

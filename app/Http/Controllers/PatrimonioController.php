@@ -24,7 +24,7 @@ class PatrimonioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create() {
-       return view('forms.cadastro');
+       return view('forms.cadastro', compact('patrimonios'));
     }
 
     /**

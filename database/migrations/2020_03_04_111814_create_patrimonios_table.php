@@ -18,7 +18,7 @@ class CreatePatrimoniosTable extends Migration
             $table->string('categoria');
             $table->string('computador');
             $table->string('monitor');
-            $table->string('monitor2')->nullable();
+            $table->string('monitor2');
             $table->int('Qtd_Monitor');
             $table->string('plenus');
             $table->string('mesa');

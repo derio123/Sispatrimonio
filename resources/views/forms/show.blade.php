@@ -13,7 +13,7 @@
           <tr>
             <th>Categoria</th>
             <th>Patrimonios</th>
-            <th>Cod. Patrimonio</th>
+            <th>Código</th>
             <th>Plenus</th>
           </tr>
         </thead>
@@ -28,7 +28,7 @@
       </table>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
     </div>
   </div>
 </div>
