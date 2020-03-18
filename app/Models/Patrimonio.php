@@ -11,3 +11,4 @@ class Patrimonio extends Model
     protected $table = 'patrimonios';
     public $timestamps=false;
 }
+//plenus depois $table->string('plenus');

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateInventariosTable extends Migration
+class CreateInventarioCategoriasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateInventariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('inventarios', function (Blueprint $table) {
+        Schema::create('inventario_categorias', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('patrimonio');
-            $table->string('cod_inventario');
-            $table->string('cod_monitor2');
-            $table->string('descricao');
-            $table->string('tipo');
-            $table->string('outro_tipo');
+            $table->integer('inventarios_id')->unsigned()->references('id')->on('inventarios'); //Permite numeros positivos
+           
+            $table->integer('categorias_id')->unsigned()->references('id')->on('categorias');
             $table->timestamps();
         });
     }
@@ -32,6 +29,6 @@ class CreateInventariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inventarios');
+        Schema::dropIfExists('inventario_categorias');
     }
 }

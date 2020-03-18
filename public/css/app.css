@@ -1,23 +1,33 @@
 *{ padding: 0; margin: 0; }
 
-.img{ width: 40%; height: auto; }
+.img{ width: 30%; height: 80%; }
 
-.uper { margin-top: 30px; }
+button.navbar-toggler { 
+    float: left;
+    margin-left: 330px;
+ }
+
+.uper { margin-top: 10px; }
 
 .table { margin-top: 30px; }
 
 button.btn { padding-left: 30px; }
 
+.styleicon{  
+    font-size: 18px;
+    color: #f9ffeb;
+ }
+
 nav.nav .nav-pills .nav-link { 
-    float: initial; width: 30px;
+    float: initial; width: 20px;
     font-family: Arial, Helvetica, sans-serif;
-    margin: 10px; display: grid;
-    font-size: 14pt; padding-left: 0;
+    margin: 30px; display: grid;
+    font-size: 20pt; padding-left: 0;
     padding: 0; text-align: center;
 }
 li.nav-item .nav-link {
     float: initial; font-family: Arial, Helvetica, sans-serif;
-    margin: 30px; display: grid; font-size: 14pt;
+    margin: 20px; display: grid; font-size: 15pt;
     padding-left: 0; padding: 0; text-align: center;
 }
 
@@ -27,4 +37,9 @@ li.nav-item .nav-link {
 #headingOne1 { background-color: #3700cc; }
 
 div#Moveis { display: none; }
+div#Info { display: none; }
 div.quant { display: none;}
+
+.fundoCard {
+    background-color: #d4fcfc;
+}

@@ -14,6 +14,7 @@
 Route::get('/', function () { return view('index'); })->name('index');
 
 Route::resource('patrimonio', 'PatrimonioController');
+Route::resource('categorias', 'CategoriasController');
 
 Route::get('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.update');
 Route::post('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.update');

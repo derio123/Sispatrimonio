@@ -18,12 +18,11 @@ class CreatePatrimoniosTable extends Migration
             $table->string('categoria');
             $table->string('computador');
             $table->string('monitor');
-            $table->string('monitor2');
-            $table->int('Qtd_Monitor');
-            $table->string('plenus');
-            $table->string('mesa');
-            $table->string('gaveteiro');
-            $table->string('cadeira');
+            $table->string('monitor2')->nullable();
+            $table->integer('Qtd_Monitor');
+            $table->string('mesa')->nullable();
+            $table->string('gaveteiro')->nullable();;
+            $table->string('cadeira')->nullable();;
             $table->timestamps();
         });
     }

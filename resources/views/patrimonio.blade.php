@@ -8,11 +8,20 @@
             <h3 class="card-text text-center">Patrimonios relacionados</h3>
         </div>
 
+        <div class="container-fluid col-6 uper">
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" id="search_patrimonio" name="pesquisar" type="search" placeholder="ache seu patrimonio" aria-label="Search">
+                <a class="btn btn-success">
+                    <span class="styleicon"><i class="fas fa-search"></i> Pesquisar</span>
+                </a>
+            </form>
+        </div>
+
         <table class="table-responsive-md table table-bordered">
             <thead>
                 <tr>
                     <th> Usuario </th>
-                    <th> Inventários</th>
+                    <th> Sala </th>
                     <th> Categoria</th>
                     <th colspan="2"> Ações </th>
                 </tr>
@@ -22,22 +31,25 @@
                 @foreach($patrimonios as $patrimonio)
                 <tr>
                     <td> Usuario </td>
-                    <td> Patimonio</td>
+                    <td> TA13 </td>
                     <td>{{$patrimonio->categoria}} </td>
                     <td>
                         <a href="{{ route('patrimonio.show', $patrimonio->id)}}" data-toggle="modal" data-target="#modalShow{{$patrimonio->id}}" class="btn btn-secondary">
-                            Detalhes
-                            <i class="fas fa-plus"></i>
+                            <span class="styleicon">
+                                <i class="fas fa-info"></i> Detalhes
+                            </span>
                         </a>
 
                         <a href="{{ route('patrimonio.edit', $patrimonio->id)}}" class="btn btn-warning ml-2">
-                            Editar
-                            <i class="fas fa-plus"></i>
+                            <span class="styleicon">
+                                <i class="fas fa-edit"></i> Editar
+                            </span>
                         </a>
 
                         <a href="{{ route('patrimonio.destroy', $patrimonio->id)}}" data-toggle="modal" data-target="#modalDelete{{$patrimonio->id}}" class="btn btn-danger ml-2">
-                            Excluir
-                            <i class="fas fa-plus"></i>
+                            <span class="styleicon">
+                                <i class="fas fa-times"></i> Excluir
+                            </span>
                         </a>
                     </td>
                 </tr>

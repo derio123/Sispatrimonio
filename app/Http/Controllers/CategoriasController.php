@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Categorias;
-use App\Models\Inventario;
-use App\Models\Relacao\InventarioCategorias;
+use Illuminate\Http\Request;
 
-
-class InventarioController extends Controller
+class CategoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +14,8 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        
+        $categorias = Categorias::all();
+        return view('categorias.categoria', compact('categorias'));
     }
 
     /**
@@ -27,8 +25,6 @@ class InventarioController extends Controller
      */
     public function create()
     {
-        $categorias = Categorias::all();
-        return view('forms.cadastro', compact('categorias'));
     }
 
     /**
@@ -39,8 +35,11 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        $inventario = new Inventario;
-        /* $inventario->patrimonio = $request-> */
+        $validate = $request->validate([
+            'categoria' => 'required|unique:categorias'
+        ]);
+        $categorias = Categorias::create($validate);
+        return redirect()->route('categorias.index', $categorias)->withSuccess('Patrimonio salvo!'); 
     }
 
     /**
