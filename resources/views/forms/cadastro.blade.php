@@ -26,8 +26,8 @@
                         {{csrf_field()}}
                         <div class="form-group form-check-label">
                             <label for="description">Categoria</label>
-                            <input type="radio" onclick="document.getElementById('Moveis').style.display = 'none', 
-                                    document.getElementById('Info').style.display = 'initial', 
+                            <input type="radio" onclick="document.getElementById('Moveis').style.display = 'none',
+                                    document.getElementById('Info').style.display = 'initial',
                                     document.getElementById('Moveis').style.display = 'none'" name="categoria" value="Informatica">Informatica</input>
                         </div>
 
@@ -91,8 +91,8 @@
 
                         <div class="form-group form-check-label">
                             <label for="description">Categoria</label>
-                            <input type="radio" onclick="document.getElementById('Moveis').style.display = 'initial', 
-                                    document.getElementById('Info').style.display = 'initial', 
+                            <input type="radio" onclick="document.getElementById('Moveis').style.display = 'initial',
+                                    document.getElementById('Info').style.display = 'initial',
                                     document.getElementById('Info').style.display = 'initial'" name="categoria" value="Móveis">Móveis</input>
                         </div>
                         <div class="col-sm-9 col-md-12 text-left">
@@ -124,7 +124,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-check-label mt-2 mb-1" id="">
+                            <div class="form-check-label mt-2 mb-2" id="">
                                 <div class="input-group-prepend">
                                     <p class="m-1" for="">Sala/Equipe</p>
                                     <select class="form-control" name="" id="">
@@ -151,6 +151,14 @@
 
                         <a href="{{route('patrimonio.index')}}" type="submit" class="btn btn-secondary text-white lead mb-3 ml-2">
                             <i class="fas fa-chevron-left"></i> Voltar
+                        </a>
+
+                        <a onclick="document.body.empty = '';" type="submit" class="btn btn-danger text-white lead mb-3 ml-2">
+                            <i class="fas fa-broom"></i> Limpar
+                        </a>
+
+                        <a onclick="location.reload();" type="submit" class="btn btn-dark text-white lead mb-3 ml-2">
+                            <i class="fas fa-retweet"></i> Aualizar
                         </a>
                     </div>
                     <!-- <div class="form-control">
