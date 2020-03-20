@@ -8,11 +8,11 @@
             <h3 class="card-text text-center">Patrimonios relacionados</h3>
         </div>
 
-        <div class="container-fluid col-6 uper">
+        <div class="container-fluid uper">
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" id="search_patrimonio" name="pesquisar" type="search" placeholder="ache seu patrimonio" aria-label="Search">
-                <a class="btn btn-success">
-                    <span class="styleicon"><i class="fas fa-search"></i> Pesquisar</span>
+                <input class="form-control col-8 mr-sm-2" id="search_patrimonio" name="pesquisar" type="search" placeholder="pesquise aqui" aria-label="Search">
+                <a class="btn btn-md btn-success ml-3 col-2">
+                    <i class="fas fa-search fa-2x"></i>
                 </a>
             </form>
         </div>
@@ -34,22 +34,16 @@
                     <td> TA13 </td>
                     <td>{{$patrimonio->categoria}} </td>
                     <td>
-                        <a href="{{ route('patrimonio.show', $patrimonio->id)}}" data-toggle="modal" data-target="#modalShow{{$patrimonio->id}}" class="btn btn-secondary">
-                            <span class="styleicon">
-                                <i class="fas fa-info"></i> Detalhes
-                            </span>
+                        <a href="{{ route('patrimonio.show', $patrimonio->id)}}" data-toggle="modal" data-target="#modalShow{{$patrimonio->id}}" title="Detalhes" class="btn btn-secondary">
+                            <i class="fas fa-eye fa-2x"></i>
                         </a>
 
-                        <a href="{{ route('patrimonio.edit', $patrimonio->id)}}" class="btn btn-warning ml-2">
-                            <span class="styleicon">
-                                <i class="fas fa-edit"></i> Editar
-                            </span>
+                        <a href="{{ route('patrimonio.edit', $patrimonio->id)}}" title="Editar" class="btn btn-warning ml-2">
+                            <i class="fas fa-edit fa-2x"></i>
                         </a>
 
-                        <a href="{{ route('patrimonio.destroy', $patrimonio->id)}}" data-toggle="modal" data-target="#modalDelete{{$patrimonio->id}}" class="btn btn-danger ml-2">
-                            <span class="styleicon">
-                                <i class="fas fa-times"></i> Excluir
-                            </span>
+                        <a href="{{ route('patrimonio.destroy', $patrimonio->id)}}" title="Excluir" data-toggle="modal" data-target="#modalDelete{{$patrimonio->id}}" class="btn btn-danger ml-2">
+                            <i class="fas fa-times fa-2x"></i>
                         </a>
                     </td>
                 </tr>

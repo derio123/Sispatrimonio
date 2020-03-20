@@ -22,13 +22,15 @@
             <td>{{$patrimonio->categoria}}</td>
             <td></td>
             <td>{{$patrimonio->computador}}-{{$patrimonio->monitor}}</td>
-            <td>  </td>
+            <td> </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      <a class="btn btn-danger" data-dismiss="modal">
+        <i class="fas fa-times fa-2x"></i>
+      </a>
     </div>
   </div>
 </div>

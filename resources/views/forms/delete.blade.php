@@ -8,12 +8,12 @@
     <p class="text-center">Deseja excluir patrimonio {{$patrimonio->categoria}} ?</p>
 </div>
 <div class="modal-footer">
-    <a href="{{route('patrimonio.index')}}" type="submit" data-dismiss="modal" class="btn btn-secondary ml-2" autofocus>
-        <i class="fas fa-times-circle fa-2x"></i>Cancelar
+    <a href="{{route('patrimonio.index')}}" type="submit" data-dismiss="modal" class="btn btn-secondary ml-2" autofocus title="Cancelar a exlcusão">
+        <i class="fas fa-chevron-left fa-2x"></i>
     </a>
     <form method="post" action="{{route('patrimonio.destroy', $patrimonio->id)}}">
         @csrf
         @method('DELETE')
-        <button class="btn btn-danger"></i>Excluir</button>
+        <a class="btn btn-danger fas fa-trash fa-2x" title="Excluir o patrimonio"></a>
     </form>
 </div>
