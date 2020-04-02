@@ -2,20 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Invetario\PatrimonioFormRequest;
+use App\Models\Categorias;
+use App\Models\Inventario;
 use App\Models\Patrimonio;
 use Illuminate\Http\Request;
 
 class PatrimonioController extends Controller
 {
+    private $patrimonio;
+
+    public function __construct(Inventario $patrimonio)
+    {
+        $this->patrimonio = $patrimonio;
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $patrimonios = Patrimonio::all();
-        return view('patrimonio', compact('patrimonios'));
+        $title = 'Listagem de patrimonios';
+        $patrimonios = Inventario::paginate(8);
+        $search = $request->get('search');
+        return view('patrimonio', compact('patrimonios', 'title', 'search'));
     }
 
     /**
@@ -23,8 +34,34 @@ class PatrimonioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-       return view('forms.cadastro', compact('patrimonios'));
+    public function create()
+    {
+        $title = 'Adicionar Inventários';
+        $gabinete = ["Gabinete-HP", "Gabinete-Lenovo", "Gabinete-Positivo",];
+        $monitor = ["Monitor-Dell", "Monitor-HP", "Monitor-LG", "Monitor-Samsung", "Monitor-Lenovo", "Monitor-Positivo"];
+        $inventariomovel = ['Mesa'];
+        $inventariomovel1 = ['Cadeira'];
+        $inventariomovel2 = ['Apoio', 'Gaveteiro'];
+        $salas = [
+            'SALA DE REUNIÃO–TA 01', 'COPA–TA 02', 'SALA DE REUNIÃO–TA 13 “A”',
+            'COORDENAÇÃO DE TRANSPARÊNCIA-TA 14 “A”', 'NÚCLEO DE TECNOLOGIA–TA 13',
+            'NÚCLEO DE APOIO ADMINISTRATIVO–TA 13', 'SERVIÇO DE INFORMAÇÃO AO CIDADÃO (SIC)-TA 14',
+            'SALA DE ATENDIMENTO–TA 17', 'ARQUIVO–TA 18 “A”', 'PREPOSTA–TA 18',
+            'DEPÓSITO–142 “A”', 'REFEITÓRIO-142', 'TREINAMENTO-148', 'GABINETE – N° 179', 'COORDENAÇÃO DE OUVIDORIA–N° 156 "A"',
+            'COORDENAÇÃO DE OUVIDORIA–N° 156', 'SALA DE REUNIÃO–N° 172', 'DIVISÃO DE OUVIDORIA–N° 161',
+            'ASSESSORIA–N° 177 “A”', 'ASSESSORIA–N° 177', 
+        ];
+        return view('forms.cadastro-edit', compact(
+            'patrimonio',
+            'title',
+            'gabinete',
+            'monitor',
+            'inventariomovel',
+            'inventariomovel1',
+            'inventariomovel2',
+            'salas'
+        ));
+        /* return view('forms.cadastro')->with('categotias', Categorias::all()); */
     }
 
     /**
@@ -33,19 +70,17 @@ class PatrimonioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-        $validate = $request->validate([
-            'categoria' => 'required|max:20',
-            'computador' => 'required|max:30',
-            'monitor' => 'required|max:30',
-            'monitor2' => 'max:30',
-            'Qtd_Monitor' => 'max:30',
-            'mesa' => 'max:30',
-            'gaveteiro' => 'max:30',
-            'cadeira' => 'max:30',
-        ]);
-        $patrimonios = Patrimonio::create($validate);
-        return redirect()->route('patrimonio.index', $patrimonios)->withSuccess('Patrimonio salvo!');    
+    public function store(PatrimonioFormRequest $request) //Request personalizado
+    {
+        $patrimonioData = $request->all();
+        //$data['active'] = ( !isset($data['active']) ) ? 0 : 1;     
+
+        /*  $this->validate($request, $this->patrimonio->rules, $messages);*/
+        $patrimonio = $this->patrimonio->create($patrimonioData); //Parei aqui
+        if ($patrimonio)
+            return redirect()->route('patrimonio.index')->withSuccess('Patrimonio salvo!');
+        else
+            return redirect()->route('patrimonio.create')->withErrors('Erro ao salvar!');
     }
 
     /**
@@ -54,8 +89,9 @@ class PatrimonioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id){
-        $patrimonios = Patrimonio::findOrfail($id);
+    public function show($id)
+    {
+        $patrimonios = Inventario::findOrfail($id);
         return view('forms.show', compact('patrimonios'));
     }
 
@@ -65,9 +101,38 @@ class PatrimonioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id){
-        $patrimonios = Patrimonio::findOrfail($id);
-        return view('forms.editar', compact('patrimonios'));
+    public function edit($id)
+    {
+        //Recupera por id
+        $title = "Editar inventários";
+        $gabinete = ["Gabinete-HP", "Gabinete-Lenovo", "Gabinete-Positivo",];
+        $monitor = ["Monitor-Dell", "Monitor-HP", "Monitor-LG", "Monitor-Samsung", "Monitor-Lenovo", "Monitor-Positivo"];
+        $inventariomovel = ['Mesa'];
+        $inventariomovel1 = ['Cadeira'];
+        $inventariomovel2 = ['Apoio', 'Gaveteiro'];
+        $salas = [
+            'SALA DE REUNIÃO–TA 01', 'COPA–TA 02', 'SALA DE REUNIÃO–TA 13 “A”',
+            'COORDENAÇÃO DE TRANSPARÊNCIA-TA 14 “A”', 'NÚCLEO DE TECNOLOGIA–TA 13',
+            'NÚCLEO DE APOIO ADMINISTRATIVO–TA 13', 'SERVIÇO DE INFORMAÇÃO AO CIDADÃO (SIC)-TA 14',
+            'SALA DE ATENDIMENTO–TA 17', 'ARQUIVO–TA 18 “A”', 'PREPOSTA–TA 18',
+            'DEPÓSITO–142 “A”', 'REFEITÓRIO-142', 'TREINAMENTO-148','GABINETE–N° 179', 'COORDENAÇÃO DE OUVIDORIA–N° 156 "A"',
+            'COORDENAÇÃO DE OUVIDORIA–N° 156', 'SALA DE REUNIÃO–N° 172', 'DIVISÃO DE OUVIDORIA–N° 161',
+            'ASSESSORIA–N° 177 “A”', 'ASSESSORIA–N° 177', 
+        ];
+        $patrimonio = $this->patrimonio->find($id);
+        return view(
+            'forms.editar',
+            compact(
+                'patrimonio',
+                'title',
+                'gabinete',
+                'monitor',
+                'inventariomovel',
+                'inventariomovel1',
+                'inventariomovel2',
+                'salas'
+            )
+        );
     }
 
     /**
@@ -77,21 +142,20 @@ class PatrimonioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(PatrimonioFormRequest $request)
     {
-        $validate = $request->validate([
-            'categoria' => 'required|max:20',
-            'computador' => 'required|max:30',
-            'monitor' => 'required|max:30',
-            'monitor2' => 'max:30',
-            'Qtd_Monitor' => 'required',
-            'mesa' => 'max:30',
-            'gaveteiro' => 'max:30',
-            'cadeira' => 'max:30',
-        ]);
         $id = $request->id;
-        Patrimonio::whereId($id)->update($validate);
-        return redirect()->route('patrimonio.index')->withSuccess('Patrimonio atualizado!'); 
+        
+        $patrimonio = $this->patrimonio->findOrFail($id);
+        
+        $data = $request->all();
+        
+        $update = $patrimonio->update($data);
+        
+        if ($update)
+            return redirect()->route('patrimonio.index');
+        else
+            return redirect()->route('patrimonio.edit', $id)->withErrors('Falha ao editar');
     }
 
     /**
@@ -100,9 +164,22 @@ class PatrimonioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id){
-        $patrimonios = Patrimonio::findOrfail($id);
+    public function destroy($id)
+    {
+        $patrimonios = Inventario::findOrfail($id);
         $patrimonios->delete();
         return redirect()->route('patrimonio.index')->withSuccess('Patrimonio excluido!');
+    }
+
+    public function test()
+    {
+        $insert = Inventario::create([
+            'patrimoniogabinete' => 'gabinete-hp'
+        ]);
+
+        if ($insert)
+            return 'Sucesso';
+        else
+            return 'Falha';
     }
 }

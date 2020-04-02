@@ -13,9 +13,12 @@
 
 Route::get('/', function () { return view('index'); })->name('index');
 
-Route::resource('patrimonio', 'PatrimonioController');
 Route::resource('categorias', 'CategoriasController');
+Route::resource('patrimonio', 'PatrimonioController');
 
 Route::get('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.update');
 Route::post('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.update');
+Route::put('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.update');
 
+Route::get('/patrimonio/editar/{id}', 'PatrimonioController@edit')->name('patrimonio.edit');
+Route::post('/patrimonio/editar/{id}', 'PatrimonioController@edit')->name('patrimonio.edit');

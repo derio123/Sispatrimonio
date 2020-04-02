@@ -4,8 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePatrimoniosTable extends Migration
-{
+class CreatePatrimoniosTable extends Migration {
     /**
      * Run the migrations.
      *
@@ -19,7 +18,6 @@ class CreatePatrimoniosTable extends Migration
             $table->string('computador');
             $table->string('monitor');
             $table->string('monitor2')->nullable();
-            $table->integer('Qtd_Monitor');
             $table->string('mesa')->nullable();
             $table->string('gaveteiro')->nullable();;
             $table->string('cadeira')->nullable();;

@@ -40,7 +40,8 @@ class InventarioController extends Controller
     public function store(Request $request)
     {
         $inventario = new Inventario;
-        /* $inventario->patrimonio = $request-> */
+        $inventario->patrimonio = ['Gabinete - HP','Gabinete - Lenovo','Gabinete - Positivo'];
+        $inventario->patrimonio = $request->input('patrimonio'); 
     }
 
     /**

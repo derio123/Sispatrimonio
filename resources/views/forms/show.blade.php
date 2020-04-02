@@ -1,4 +1,4 @@
-<div class="modal-dialog" role="document">
+<div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
     <div class="modal-header">
       <h5 class="modal-title" id="exampleModalLabel">Detalhes</h5>
@@ -7,24 +7,57 @@
       </button>
     </div>
     <div class="modal-body">
-      <p class="card-text">Usuario: Jonh boo santos</p>
+
+      <div class="input-group">
+        <div class="input-group-prepend col-6 text-left">
+          <h3><span class="badge badge-danger">Usuário: Jonh boo santos</span></h3>
+        </div>
+        <div class="input-group-prepend col-6 text-left">
+          <h3><span class="badge badge-danger">Sala: {{$patrimonio->sala}}</span></h3>
+        </div>
+      </div>
+
       <table class="table table-striped">
         <thead>
           <tr>
             <th>Categoria</th>
             <th>Patrimonios</th>
             <th>Código</th>
-            <th>Plenus</th>
+            {{-- <th>Plenus</th> --}}
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>{{$patrimonio->categoria}}</td>
-            <td></td>
-            <td>{{$patrimonio->computador}}-{{$patrimonio->monitor}}</td>
-            <td> </td>
+            <td>{{$patrimonio->patrimoniogabinete}}</td>
+            <td>{{$patrimonio->cod_gabinete}}</td>
+          </tr>
+          <tr>
+            <td>{{$patrimonio->categoria}}</td>
+            <td>{{$patrimonio->patrimoniomonitor}}
+              <br>
+              {{$patrimonio->patrimoniomonitor2}}</td>
+            <td>{{$patrimonio->cod_monitor}}
+              <br>
+              {{$patrimonio->cod_monitor2}}</td>
+          </tr>
+          <tr>
+            <td>{{$patrimonio->categoria}}</td>
+            <td>{{$patrimonio->patrimonioMesa}}</td>
+            <td>{{$patrimonio->cod_Mesa}}</td>
+          </tr>
+          <tr>
+            <td>{{$patrimonio->categoria}}</td>
+            <td>{{$patrimonio->patrimonioCadeira}}</td>
+            <td>{{$patrimonio->cod_Cadeira}}</td>
+          </tr>
+          <tr>
+            <td>{{$patrimonio->categoria}}</td>
+            <td>{{$patrimonio->patrimonioOutro}}</td>
+            <td>{{$patrimonio->cod_Outro}}</td>
           </tr>
         </tbody>
+
       </table>
     </div>
     <div class="modal-footer">

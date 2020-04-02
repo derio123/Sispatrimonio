@@ -15,12 +15,21 @@ class CreateInventariosTable extends Migration
     {
         Schema::create('inventarios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('patrimonio');
-            $table->string('cod_inventario');
-            $table->string('cod_monitor2');
-            $table->string('descricao');
-            $table->string('tipo');
-            $table->string('outro_tipo');
+            $table->string('patrimoniogabinete');
+            $table->string('cod_gabinete')->unique();/* Parei aqui */
+            $table->string('patrimoniomonitor');
+            $table->string('patrimoniomonitor2')->nullable();
+            $table->string('cod_monitor')->unique();
+            $table->string('cod_monitor2')->unique()->nullable();
+            $table->text('descricaoInfo')->nullable();
+            $table->string('patrimonioMesa');
+            $table->string('cod_Mesa')->unique();
+            $table->string('patrimonioCadeira');
+            $table->string('cod_Cadeira')->unique();
+            $table->string('patrimonioOutro')->nullable();
+            $table->string('cod_Outro')->unique()->nullable();
+            $table->text('descricaoMoveis')->nullable();
+            $table->string('sala');
             $table->timestamps();
         });
     }
