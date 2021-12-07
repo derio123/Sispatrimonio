@@ -11,10 +11,12 @@ use Illuminate\Http\Request;
 class PatrimonioController extends Controller
 {
     private $patrimonio;
+    private $categoria;
 
-    public function __construct(Inventario $patrimonio)
+    public function __construct(Inventario $patrimonio, Categorias $categoria)
     {
         $this->patrimonio = $patrimonio;
+        $this->$categoria = $categoria;
     }
     /**
      * Display a listing of the resource.
@@ -42,8 +44,7 @@ class PatrimonioController extends Controller
         $inventariomovel = ['Mesa'];
         $inventariomovel1 = ['Cadeira'];
         $inventariomovel2 = ['Apoio', 'Gaveteiro'];
-        $salas = [
-            'SALA DE REUNIÃO–TA 01', 'COPA–TA 02', 'SALA DE REUNIÃO–TA 13 “A”',
+        $salas = ['SALA DE REUNIÃO–TA 01', 'COPA–TA 02', 'SALA DE REUNIÃO–TA 13 “A”',
             'COORDENAÇÃO DE TRANSPARÊNCIA-TA 14 “A”', 'NÚCLEO DE TECNOLOGIA–TA 13',
             'NÚCLEO DE APOIO ADMINISTRATIVO–TA 13', 'SERVIÇO DE INFORMAÇÃO AO CIDADÃO (SIC)-TA 14',
             'SALA DE ATENDIMENTO–TA 17', 'ARQUIVO–TA 18 “A”', 'PREPOSTA–TA 18',
@@ -52,7 +53,6 @@ class PatrimonioController extends Controller
             'ASSESSORIA–N° 177 “A”', 'ASSESSORIA–N° 177', 
         ];
         return view('forms.cadastro-edit', compact(
-            'patrimonio',
             'title',
             'gabinete',
             'monitor',
@@ -92,7 +92,9 @@ class PatrimonioController extends Controller
     public function show($id)
     {
         $patrimonios = Inventario::findOrfail($id);
-        return view('forms.show', compact('patrimonios'));
+        $categoria = Categorias::findOrfail($id);
+        debug($patrimonio);
+        return view('forms.show', compact('patrimonios', 'categoria'));
     }
 
     /**

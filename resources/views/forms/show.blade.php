@@ -7,7 +7,6 @@
       </button>
     </div>
     <div class="modal-body">
-
       <div class="input-group">
         <div class="input-group-prepend col-6 text-left">
           <h3><span class="badge badge-danger">Usuário: Jonh boo santos</span></h3>

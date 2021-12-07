@@ -13,3 +13,5 @@ yarn-error.log
 /database/
 composer.lock
 .editorconfig
+.docker/*
+docker/nginx
