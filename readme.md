@@ -63,11 +63,8 @@ composer install && php artisan key:generate
 Após isso acesse o localhost da porta do nginx para roda o servico <a href="http://localhost:4500/">sispatrimonio</a>
 
 >>Nota: Stacks usadas nos containers foram:
-<p>
-    <label><a href="laravel.com/">#Laravel</a></label> 
-    <label><a href="https://www.phpmyadmin.net/">#phpmyadmin</a></label> 
-    <label><a href="https://hub.docker.com/_/mysql">#mysql</a></label>
-    <label><a href="https://hub.docker.com/_/nginx">#nginx</a></label>
-</p>
-
+>><a href="laravel.com/">#Laravel</a></label> 
+<a href="https://www.phpmyadmin.net/">#phpmyadmin</a>
+<a href="https://hub.docker.com/_/mysql">#mysql</a>
+<a href="https://hub.docker.com/_/nginx">#nginx</a>
 
