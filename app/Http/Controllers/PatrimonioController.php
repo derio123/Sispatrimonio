@@ -26,6 +26,7 @@ class PatrimonioController extends Controller
     public function index(Request $request)
     {
         $title = 'Listagem de patrimonios';
+        $categorias = Categorias::all();
         $patrimonios = Inventario::paginate(8);
         $search = $request->get('search');
         return view('patrimonio', compact('patrimonios', 'title', 'search'));
@@ -91,10 +92,10 @@ class PatrimonioController extends Controller
      */
     public function show($id)
     {
-        $patrimonios = Inventario::findOrfail($id);
+        $patrimonio = Inventario::findOrfail($id);
         $categoria = Categorias::findOrfail($id);
         debug($patrimonio);
-        return view('forms.show', compact('patrimonios', 'categoria'));
+        return view('forms.show', compact('patrimonio', 'categoria'));
     }
 
     /**

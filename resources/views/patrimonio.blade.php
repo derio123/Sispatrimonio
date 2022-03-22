@@ -35,17 +35,21 @@
                     <td>{{$patrimonio->sala}}</td>
                     <td> Jonh boo santos </td>
                     <td>
-                        <a href="{{ route('patrimonio.show', $patrimonio->id)}}" data-toggle="modal"
-                            data-target="#modalShow{{$patrimonio->id}}" title="Detalhes" class="btn btn-secondary">
+                        <a href="{{ route('patrimonio.show', $patrimonio->id)}}" 
+                            data-toggle="modal"
+                            data-target="#modalShow{{$patrimonio->id}}" title="Detalhes" 
+                            class="btn btn-secondary">
                             <i class="fas fa-eye fa-1x"></i>
                         </a>
 
-                        <a href="{{ route('patrimonio.edit', $patrimonio->id)}}" title="Editar"
+                        <a href="{{ route('patrimonio.edit', $patrimonio->id)}}" 
+                            title="Editar"
                             class="btn btn-warning ml-2">
                             <i class="fas fa-edit fa-1x"></i>
                         </a>
 
-                        <a href="{{ route('patrimonio.destroy', $patrimonio->id)}}" title="Excluir" data-toggle="modal"
+                        <a href="{{ route('patrimonio.destroy', $patrimonio->id)}}" 
+                            title="Excluir" data-toggle="modal"
                             data-target="#modalDelete{{$patrimonio->id}}" class="btn btn-danger ml-2">
                             <i class="fas fa-trash fa-1x"></i>
                         </a>

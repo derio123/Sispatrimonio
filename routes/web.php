@@ -20,5 +20,11 @@ Route::get('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.
 Route::post('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.update');
 Route::put('patrimonio.index', 'PatrimonioController@update')->name('patrimonio.update');
 
-Route::get('/patrimonio/editar/{id}', 'PatrimonioController@edit')->name('patrimonio.edit');
-Route::post('/patrimonio/editar/{id}', 'PatrimonioController@edit')->name('patrimonio.edit');
+Route::get('forms.show', 'PatrimonioController@show')->name('patrimonio.show');
+
+Route::get('patrimonio.destroy', 'PatrimonioController@destroy')->name('patrimonio.destroy');
+Route::post('patrimonio.destroy', 'PatrimonioController@destroy')->name('patrimonio.destroy');
+
+Route::get('forms.editar', 'PatrimonioController@edit')->name('patrimonio.edit')->whereUuid('id');
+Route::post('forms.editar', 'PatrimonioController@edit')->name('patrimonio.edit')->whereUuid('id');
+Route::put('forms.editar', 'PatrimonioController@edit')->name('patrimonio.edit')->whereUuid('id');
