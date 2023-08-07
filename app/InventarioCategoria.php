@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Relacao;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class InventarioCategorias extends Model
+class InventarioCategoria extends Model
 {
     protected $table = 'inventario_categorias';
     public $timestamps=false;

@@ -1,6 +1,6 @@
 version: "3.3"
 services:
-  sispatrimonio:
+  app:
     build: 
       args: 
         user: derio
@@ -21,15 +21,15 @@ services:
   nginx:
     image: nginx:alpine
     ports:
-      - 4500:80
+      - 8000:80
     restart: unless-stopped
     volumes:
       - ./:/var/www
-      - ./docker/nginx:/etc/nginx/conf.d/
+      - ./docker/nginx/:/etc/nginx/conf.d/
     networks:
       - laravel-eti
 
-  mysql:
+  db:
     image: mysql:5.7.22
     restart: unless-stopped
     environment:

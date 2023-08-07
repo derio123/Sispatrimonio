@@ -1,6 +1,6 @@
 # Sispat
 > Sistema de Patrimonio
-<img src="public/img/logo.png" alt="">
+<img src="public/img/logo.png" alt="logo">
 
 ### Passo a passo
 Para começar é necessário ter o <a href="https://docs.docker.com/engine/install/ubuntu/">Docker</a> instalado veja no link
@@ -52,7 +52,7 @@ sudo docker-compose up -d
 ```
 #### Acesse o container sispatrimonio:
 ```sh
-sudo docker-compose exec sispatrimonio bash
+sudo docker-compose exec app bash
 ``` 
 
 #### Após entrar no bash do projeto, instale as dependências e gere a key do projeto laravel:
@@ -61,6 +61,8 @@ composer install && php artisan key:generate
 ```   
 
 Após isso acesse o localhost da porta do nginx para roda o servico <a href="http://localhost:4500/">sispatrimonio</a>
+
+<img src="public/img/readme/Syspat.jpeg" alt="Syspat em execução">
 
 >>Nota: Stacks usadas nos containers foram:
 >><a href="laravel.com/">#Laravel</a></label> 

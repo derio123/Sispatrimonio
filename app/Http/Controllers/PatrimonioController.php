@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Invetario\PatrimonioFormRequest;
-use App\Models\Categorias;
-use App\Models\Inventario;
-use App\Models\Patrimonio;
+use App\Categorias;
+use App\Inventario;
+use App\Patrimonio;
 use Illuminate\Http\Request;
 
 class PatrimonioController extends Controller
@@ -122,7 +122,7 @@ class PatrimonioController extends Controller
             'COORDENAÇÃO DE OUVIDORIA–N° 156', 'SALA DE REUNIÃO–N° 172', 'DIVISÃO DE OUVIDORIA–N° 161',
             'ASSESSORIA–N° 177 “A”', 'ASSESSORIA–N° 177', 
         ];
-        $patrimonio = $this->patrimonio->find($id);
+        $patrimonio = Inventario::findOrFail($id);
         return view(
             'forms.editar',
             compact(
@@ -173,6 +173,12 @@ class PatrimonioController extends Controller
         $patrimonios->delete();
         return redirect()->route('patrimonio.index')->withSuccess('Patrimonio excluido!');
     }
+
+    /* public function search($search) {
+        $patrimonio =  Inventario::findOrFail($search);
+        $patrimonio->search();
+        return redirect()->route('patrimonio.se');
+    } */
 
     public function test()
     {

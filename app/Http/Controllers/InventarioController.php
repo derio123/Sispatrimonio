@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categorias;
-use App\Models\Inventario;
-use App\Models\Relacao\InventarioCategorias;
+use App\Categorias;
+use App\Inventario;
+use App\InventarioCategorias;
 
 
 class InventarioController extends Controller
